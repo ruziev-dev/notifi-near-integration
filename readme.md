@@ -2,6 +2,11 @@ Created by Timur Ruziev (participant of [**stakewars-iii**](https://github.com/n
 
 You can see my challenge report here: https://github.com/ruziev-dev/near-stakewars-iii
 
+## Getting credentials to integrate service with your node
+
+Complete form (you can find link in [# **integration-requests** in Discord channel](https://discord.com/invite/nAqR3mk3rv)) and you will get credentials for integration on e-mail.
+
+![img](https://github.com/ruziev-dev/near-stakewars-iii/blob/main/images/monitoring/notifi-service-credentials.png?raw=true)
 
 ## Installation:
 
@@ -19,14 +24,11 @@ Make your `.env` file by example `example.env`
 
 ```bash
 cp example.env .env
+
+nano .env
 ```
 
-Set your settings to `config.env`
-
 ```bash
-nano config.env
-
-# set your values
 POOL_ID="xx.factory.shardnet.near"
 NODE_IP=127.0.0.1
 SID=******************************
@@ -34,13 +36,22 @@ SECRET='****************************************'
 TOPIC=*******************************
 ```
 
-## Run
+```bash
+npm run build
+```
 
+Run to check
+
+```bash
+node build/index.js
 ```
-node index.js
-```
+
+If everething is ok you will get e-mail message
+
+![img](https://github.com/ruziev-dev/near-stakewars-iii/blob/main/images/monitoring/notifi-service.png?raw=true)
 
 ## To automate running script find path to Node.js
+
 ```bash
 which node
 
@@ -49,7 +60,7 @@ which node
 
 ```
 
-Add chron task every minute
+Add chron task midnight
 
 ```
 crontab -e
@@ -58,12 +69,6 @@ crontab -e
 Add this row with setting path to Node.js and script
 
 ```bash
-# set your path
-0 0 * * * cd /home/<USERNAME>/notifi-near-integration/ && /usr/bin/node index.js > /dev/null 2>&1
-```
-
-Reload cron service to start execute script
-
-```bash
-sudo service cron reload
+# set your <USERNAME> to path
+0 0 * * * cd /home/<USERNAME>/notifi-near-integration && /usr/bin/node build/index.js > /dev/null 2>&1
 ```
