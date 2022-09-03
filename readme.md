@@ -46,7 +46,7 @@ Run to check
 node build/index.js
 ```
 
-If everething is ok you will get e-mail message
+If everything is ok you will get e-mail message
 
 ![img](https://github.com/ruziev-dev/near-stakewars-iii/blob/main/images/monitoring/notifi-service.png?raw=true)
 
